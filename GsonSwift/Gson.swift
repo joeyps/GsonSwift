@@ -6,7 +6,7 @@
 //  Copyright © 2016年 Jourmap. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class Gson {
     init() {

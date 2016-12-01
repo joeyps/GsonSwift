@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'GsonSwift'
-  s.version      = '0.1.0'
+  s.version      = '0.1.1'
   s.authors      = { 'Pei-shiou Huang' => 'ps_huang@jourmap.com' }
   s.homepage     = 'https://github.com/joeyps/GsonSwift'
   s.platform     = :ios
