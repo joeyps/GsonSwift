@@ -8,7 +8,7 @@
 
 open class Gson: NSObject {
     
-    func fromJson<T: NSObject>(jsonString: String, to type: T.Type) -> T {
+    open func fromJson<T: NSObject>(jsonString: String, to type: T.Type) -> T {
         if let data = jsonString.data(using: .utf8) {
             return self.fromJson(jsonData: data, to: type)
         } else {
@@ -16,7 +16,7 @@ open class Gson: NSObject {
         }
     }
     
-    func fromJson<T: NSObject>(jsonData: Data, to type: T.Type) -> T {
+    open func fromJson<T: NSObject>(jsonData: Data, to type: T.Type) -> T {
         let obj = type.init()
         
         do {
@@ -34,7 +34,7 @@ open class Gson: NSObject {
         return obj
     }
     
-    func fromJson<T: NSObject>(dict: [String: Any], to type: T.Type) -> T {
+    open func fromJson<T: NSObject>(dict: [String: Any], to type: T.Type) -> T {
         let obj = type.init()
         self.applyValuesOf(obj: obj, dict: dict)
         return obj
@@ -44,7 +44,7 @@ open class Gson: NSObject {
      Converts the class to JSON.
      - returns: The class as JSON, wrapped in NSData.
      */
-    func toJson(_ obj: NSObject, prettyPrinted : Bool = false) -> Data? {
+    open func toJson(_ obj: NSObject, prettyPrinted : Bool = false) -> Data? {
         let dictionary = self.toDictionary(from: obj)
         do {
             let json = try JSONSerialization.data(withJSONObject: dictionary, options: (prettyPrinted ? .prettyPrinted : JSONSerialization.WritingOptions()))
@@ -61,7 +61,7 @@ open class Gson: NSObject {
      Converts the class to a JSON string.
      - returns: The class as a JSON string.
      */
-    func toJsonString(_ obj: NSObject, prettyPrinted : Bool = false) -> String? {
+    open func toJsonString(_ obj: NSObject, prettyPrinted : Bool = false) -> String? {
         if let jsonData = self.toJson(obj, prettyPrinted: prettyPrinted) {
             return String(data: jsonData, encoding: .utf8)
         }
