@@ -7,9 +7,6 @@
 //
 
 open class Gson: NSObject {
-    init() {
-        
-    }
     
     func fromJson<T: NSObject>(jsonString: String, to type: T.Type) -> T {
         if let data = jsonString.data(using: .utf8) {
