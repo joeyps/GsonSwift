@@ -6,9 +6,7 @@
 //  Copyright © 2016年 Jourmap. All rights reserved.
 //
 
-import UIKit
-
-class Gson {
+open class Gson: NSObject {
     init() {
         
     }
