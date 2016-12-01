@@ -10,6 +10,6 @@ Pod::Spec.new do |s|
   s.frameworks   = 'UIKit', 'CoreText', 'CoreGraphics', 'QuartzCore'
   s.source_files = 'GsonSwift'
   s.requires_arc = true
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '8.0'
   s.social_media_url = 'https://github.com/joeyps'
 end
