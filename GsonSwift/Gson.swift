@@ -8,6 +8,13 @@
 
 open class Gson: NSObject {
     
+    var appName = ""
+    
+    public override init() {
+        super.init()
+        self.appName = Bundle.main.infoDictionary![kCFBundleNameKey as String] as! String
+    }
+    
     open func fromJson<T: NSObject>(jsonString: String, to type: T.Type) -> T {
         if let data = jsonString.data(using: .utf8) {
             return self.fromJson(jsonData: data, to: type)
@@ -151,7 +158,7 @@ open class Gson: NSObject {
                         classString = classString.replacingOccurrences(of: "Array<", with: "")
                         classString = classString.replacingOccurrences(of: ">", with: "")
                         
-                        let myClass = NSClassFromString("Jourmap.\(classString)") as! NSObject.Type
+                        let myClass = NSClassFromString("\(self.appName).\(classString)") as! NSObject.Type
                         let elements = NSMutableArray()
                         for e in ary {
                             if let dict = e as? Dictionary<String, Any> {
@@ -172,7 +179,7 @@ open class Gson: NSObject {
                     var classString = String(describing: type)
                     classString = classString.replacingOccurrences(of: "Optional<", with: "")
                     classString = classString.replacingOccurrences(of: ">", with: "")
-                    let myClass = NSClassFromString("Jourmap.\(classString)") as! NSObject.Type
+                    let myClass = NSClassFromString("\(self.appName).\(classString)") as! NSObject.Type
                     let element = myClass.init()
                     self.applyValuesOf(obj: element, dict: dict)
                     obj.setValue(element, forKey: key)
