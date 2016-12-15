@@ -41,6 +41,30 @@ open class Gson: NSObject {
         return obj
     }
     
+    open func fromJson<T: NSObject>(jsonData: Data, toArrayOf type: T.Type) -> [T] {
+        
+        var array = [T]()
+        do {
+            let jsonArray = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions(rawValue: 0))
+            
+            if let ary = jsonArray as? Array<Any> {
+                for jsonObj in ary {
+                    let obj = type.init()
+                    if let dict = jsonObj as? Dictionary<String, Any> {
+                        self.applyValuesOf(obj: obj, dict: dict)
+                    }
+                    array.append(obj)
+                }
+                return array
+            }
+        } catch {
+            NSLog(error.localizedDescription)
+            return array
+        }
+        
+        return array
+    }
+    
     open func fromJson<T: NSObject>(dict: [String: Any], to type: T.Type) -> T {
         let obj = type.init()
         self.applyValuesOf(obj: obj, dict: dict)
