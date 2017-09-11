@@ -6,6 +6,11 @@ A Swift serialization/deserialization library that can convert Swift Objects int
 - Xcode 8.0+
 - Swift 3.0+
 
+## Install
+```
+pod 'GsonSwift', :git => 'https://github.com/speshiou/GsonSwift.git'
+```
+
 ## Usage
 
 ```swift
