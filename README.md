@@ -3,8 +3,8 @@ A Swift serialization/deserialization library that can convert Swift Objects int
 
 ## Requirements
 
-- Xcode 8.0+
-- Swift 3.0+
+- Xcode 9.0+
+- Swift 4.0+
 
 ## Install
 ```

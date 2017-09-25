@@ -177,7 +177,7 @@ open class Gson: NSObject {
                     if ary is Array<String> || ary is Array<Int> {
                         obj.setValue(ary, forKey: key)
                     } else {
-                        let type = type(of: child.value)
+                        let type = Swift.type(of: child.value)
                         var classString = String(describing: type)
                         classString = classString.replacingOccurrences(of: "Array<", with: "")
                         classString = classString.replacingOccurrences(of: ">", with: "")
@@ -199,7 +199,7 @@ open class Gson: NSObject {
                         continue
                     }
                     
-                    let type = type(of: child.value)
+                    let type = Swift.type(of: child.value)
                     var classString = String(describing: type)
                     classString = classString.replacingOccurrences(of: "Optional<", with: "")
                     classString = classString.replacingOccurrences(of: ">", with: "")
